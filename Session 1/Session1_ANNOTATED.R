@@ -111,8 +111,6 @@ ls()
 
 ## remember annotate your code! For you and so you can share
 
-            # EXERCISE 1.1 # 
-
 
 ########################################
 ##### 1.2 CHARACTERIZE A DATAFRAME #####
@@ -278,9 +276,6 @@ dim(UScereal)
 colnames(UScereal)
 
 
-           ## EXERCISE 1.2 ##
-
-
 ##############################################
 ##### 1.3 SUBSETTING DATASETS & LOGICALS #####
 ##############################################
@@ -376,8 +371,6 @@ UScereal[,'calories'] > 100 & UScereal[,'mfr'] == 'G'
 
 rownames(UScereal)[UScereal[,'calories'] > 100 & UScereal[,'mfr'] == 'G']
 
-    ### EXERCISE 1.3 ###
-
 
 ###############################
 ##### 1.4 GET DATA INTO R #####
@@ -417,8 +410,6 @@ sl = read.csv('sleep.csv', header=T, stringsAsFactors=FALSE)
 
  # the option "stringsAsFactors" may be relevant in other datasets
  #  check out how to use it in the help for read.csv()
-
-       #### EXERCISE 1.4 ####
 
 ################################
 ##### 1.5 CLEANING UP DATA #####
