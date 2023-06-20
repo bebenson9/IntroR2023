@@ -211,8 +211,3 @@ barplot(table(UScereal$mfr), col = c("red", "purple"))
 # make boxplot of sugar content versus shelf display
 boxplot(UScereal$sugars ~ UScereal$shelf)
 
-
-#########################
-##### 2.4 TIDYVERSE #####
-#########################
-

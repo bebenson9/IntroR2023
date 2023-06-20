@@ -159,28 +159,3 @@ test2 = data.frame(
 ##Boxplots
 # make boxplot of sugar content versus shelf display
 
-#########################
-##### 2.4 FUNCTIONS #####
-#########################
-
-# functions
-# function ( list of arguments )  { body }
-
-#make function that takes a number, x, and returns its square
-
-
-#test my function works
-
-
-# ? to access R documentation for functions (optional arguments, examples, etc.)
-
-
-# new function - paste()
-#first, read documentation
-
-
-#using paste()
-
-#########################
-##### 2.4 TIDYVERSE #####
-#########################
