@@ -75,9 +75,31 @@
 
 ## remember annotate your code! For you and so you can share
 
+#########################
+##### 1.2 FUNCTIONS #####
+#########################
+
+# functions
+# function ( list of arguments )  { body }
+
+#make function that takes a number, x, and returns its square
+
+
+#test my function works
+
+
+# ? to access R documentation for functions (optional arguments, examples, etc.)
+
+
+# new function - paste()
+#first, read documentation
+
+
+#using paste()
+
 
 ########################################
-##### 1.2 CHARACTERIZE A DATAFRAME #####
+##### 1.3 CHARACTERIZE A DATAFRAME #####
 ########################################
 
 #useful functions: install.packages(), library(), data(), str(), dim(), colnames(), rownames()
@@ -195,7 +217,7 @@ library("MASS")
   # look at our dataframe again
 
 ##############################################
-##### 1.3 SUBSETTING DATASETS & LOGICALS #####
+##### 1.4 SUBSETTING DATASETS & LOGICALS #####
 ##############################################
 
 # useful commands: "==", "!=", ">", "<", "&", "|", which
