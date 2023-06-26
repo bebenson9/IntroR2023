@@ -112,41 +112,8 @@ ls()
 ## remember annotate your code! For you and so you can share
 
 
-#########################
-##### 1.2 FUNCTIONS #####
-#########################
-
-# functions
-# function ( list of arguments )  { body }
-
-#make function that takes a number, x, and returns its square
-my.square = function(x) {
-  square = x^2
-  return(square)
-}
-
-#test my function works
-my.square(2)
-my.square(199)
-
-# ? to access R documentation for functions (optional arguments, examples, etc.)
-
-
-# new function - paste()
-#first, read documentation
-?paste
-
-#using paste()
-paste(1, 2, 4, 5, sep = "*")
-paste("cat", 5, "lettuce", sep = "!")
-
-
-##write new cvs
-write.csv(new, "nameNew.cvs")
-?write.csv
-
 ########################################
-##### 1.3 CHARACTERIZE A DATAFRAME #####
+##### 1.2 CHARACTERIZE A DATAFRAME #####
 ########################################
 
 #useful functions: install.packages(), library(), data(), str(), dim(), colnames(), rownames()
@@ -310,7 +277,7 @@ colnames(UScereal)
 
 
 ##############################################
-##### 1.4 SUBSETTING DATASETS & LOGICALS #####
+##### 1.3 SUBSETTING DATASETS & LOGICALS #####
 ##############################################
 
 # useful commands: "==", "!=", ">", "<", "&", "|", which
