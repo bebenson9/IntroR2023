@@ -19,7 +19,7 @@ getwd()
 # we can change this to a useful folder
 # setwd()
 
-setwd('/Users/mcstitzer/Downloads/')
+setwd('./Session 2/Session2_Exercises')
 
 # it's also possible to setwd through the "Session" menu of RStudio
 
@@ -37,11 +37,11 @@ list.files()
 ##  and tab delimited files with read.table()
 # read.csv()
 
-sl = read.csv('sleep.csv', header=T, stringsAsFactors=FALSE)
+sl = read.csv('sleep.csv', header=T, ?stringsAsFactors=FALSE)
 
 # the option "stringsAsFactors" may be relevant in other datasets
 #  check out how to use it in the help for read.csv()
-
+?read.csv
 #### EXERCISE 2.2 ####
 
 ################################
