@@ -1,4 +1,4 @@
-### Session 2 Lesson
+### Friday, July 7th
 
 ###############################
 ##### 2.1 GET DATA INTO R #####
@@ -21,9 +21,7 @@ getwd()
 
 setwd('./Session 2/Session2_Exercises')
 
-# it's also possible to setwd through the "Session" menu of RStudio
-
-
+       # Note: it's also possible to setwd through the "Session" menu of RStudio
 
 # Then, we can see which files are in the current directory
 # list.files()
@@ -37,12 +35,12 @@ list.files()
 ##  and tab delimited files with read.table()
 # read.csv()
 
-sl = read.csv('sleep.csv', header=T, ?stringsAsFactors=FALSE)
+sl = read.csv('sleep.csv', header=T, stringsAsFactors=FALSE)
 
 # the option "stringsAsFactors" may be relevant in other datasets
 #  check out how to use it in the help for read.csv()
+
 ?read.csv
-#### EXERCISE 2.2 ####
 
 ################################
 ##### 2.2 CLEANING UP DATA #####
@@ -65,10 +63,11 @@ class(NA)
 # this is a a logical -- indicating missing data
 
 # is.na
+
 is.na(x)
 
 # add 1 to NA
-NA + 1 # returns NA
+NA + 1        # returns NA
 
 # index values that are NA
 which(is.na(x))
@@ -86,10 +85,13 @@ z
 z[z == "."] = NA
 z
 
-# remove incomplete rows (those with NAs) from a data.frame
+# One way to clean up data is to remove incomplete rows (those with NAs) from a data.frame
+
 test = data.frame(
   x = c("a", "b", "c", "d", "d"),
   y = c(1, 2, 3, 4, NA))
+
+# check what this new data frame looks like
 
 test
 
@@ -103,20 +105,25 @@ na.exclude(test)
 # complete.cases - looks along each row, and each column, for NA values
 complete.cases(test)
 
-#na.rm as argument for some functions (e.g. mean)
+
+# na.rm as argument for some functions (e.g. mean)
 y = c(1, 4, 9, 13, NA)
 mean(y)
 ?mean
 mean(y, na.rm = TRUE)
 
-# check for duplicated rows
+
+## We also might have messy data where rows were recorded multiple times
+##  We might want to get rid of these duplicate entries
+
+
 test = data.frame(
   x = c("a", "b", "c", "d", "d"),
   y = c(1, 2, 3, 4, 4))
 
 test
 
-# duplicated
+# check for duplicated rows
 duplicated(test)
 
 # index non-DUPLICATED ROWS and remove them
@@ -130,21 +137,23 @@ test[!duplicated(test), ]
 # useful arguments within plot(): main, xlab, ylab, col, pch, cex
 
 ## Load cereal dataset from MASS package
+#install.packages("MASS") #should have installed from yesterday
+
 library("MASS")
 data(UScereal)
-
 head(UScereal)
 
 ## Scatterplots
 # plot() -- to make a scatterplot
 # plot calories versus sugar content
+
 colnames(UScereal)
 plot(UScereal[ ,"sugars"], UScereal[, "calories"])
 ?plot
 
+# different ways of achieving the same graph
 plot(x = UScereal[ ,"sugars"], y = UScereal[, "calories"])
 plot(UScereal[ , "calories"] ~ UScereal[ , "sugars"])
-
 plot(UScereal$sugars, UScereal$calories)
 
 # or plot response variable as a function "~" of the predictor variable
@@ -162,7 +171,6 @@ plot(UScereal$sugars, UScereal$calories, cex = 0.3)
 # "type" argument changes type ("l" = line, "p" = points, "b" = both)
 plot(UScereal$sugars, UScereal$calories, type = "b")
 
-
 # "lty" argument changes line type
 plot(UScereal$sugars, UScereal$calories, type = "l", lty = 4)
 
@@ -170,16 +178,11 @@ plot(UScereal$sugars, UScereal$calories, type = "l", lty = 4)
 plot(UScereal$sugars, UScereal$calories, xlab = "Sugars", ylab = "Calories",
      main = "Calories versus sugars")
 
-
-# identify() to identify on specific points
-identify(x = UScereal$sugars, y = UScereal$calories, labels = rownames(UScereal))
-
 # points() adds points to existing plot
 plot(UScereal$sugars, UScereal$calories)
 points(x = UScereal[UScereal[ ,"mfr"] == "K", "sugars"], 
        y = UScereal[UScereal[ , "mfr"] == "K", "calories"], col = "red")
 
-#lines() does same thing as points but makes line
 # ablines() adds straight line to existing plot
 abline(h = 300)
 abline(v = 5)
