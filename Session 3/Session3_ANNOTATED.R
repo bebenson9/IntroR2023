@@ -218,11 +218,14 @@ diamonds %>%
   filter(carat >= 2.5 & carat <= 3) %>%
   ggplot(aes(x = cut, y = price))+
   geom_boxplot()+
-  geom_jitter(width = 0.2, alpha = 0.3)
+  theme_bw()+
+  geom_jitter(width = 0.2, alpha = 0.3)+
+  labs(x='Cut Quality', y='Price ($)',title = 'Price Distribution by Cut Quality')
 
 diamonds %>%
   filter(carat >= 3 & carat <= 4) %>%
   ggplot(aes(x = carat, y = price))+
+  theme_bw()+
   geom_boxplot()
 # why does this plot look funny? 
 # boxplots don't make sense for two continuous variables 

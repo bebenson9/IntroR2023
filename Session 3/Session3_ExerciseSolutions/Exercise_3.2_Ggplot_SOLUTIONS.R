@@ -8,7 +8,7 @@
 #  01. Make a scatterplot of protein vs fibre content (using ggplot), color the points by manufacturer
 UScereal %>%
   ggplot(aes(x = protein, y = fibre))+
-  geom_point(aes(col = mfr)
+  geom_point(aes(col = mfr))
 
 #  02. Make a box plot of sugar content by manufacturer, facet_wrapped by shelf; add jittered points that are partially transparent
   # note: shelf is stored in this data set as a numeric value, but to treat it as a categorical variable (necessary for a box plot), you must first change the class to a factor 
@@ -25,9 +25,7 @@ UScereal %>%
 #  03. Make a histogram of the carbohydrate content in all cereals. Label the x axis "Carbohydrates (g)"
 UScereal %>%
   ggplot(aes(x = carbo))+
-  
-  
-  theme(x.axis.text('Carbohydrates (g)'))
-
+  geom_histogram()
+  labs(x = 'Carbohydrates (g)')
 
 
