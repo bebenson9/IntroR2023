@@ -20,7 +20,7 @@ library(tidyverse)
 # why doesn't R keep all packages loaded all the time? 
 # one reason is conflicts in the names of functions
 # e.g., filter() does different things depending on which package it's being used as a part of 
-# you can specify which package you are calling on for a function by using two colons
+# you can specify which package you are calling on for a function by using two colons before it
   # package::function()
   # e.g. dplyr::filter()
 
@@ -37,16 +37,17 @@ head(diamonds)
 
 ### mutate() ###
 # creates new columns that are functions of existing variables. it can also modify or delete columns
-# the tidyverse uses a pipe (%>%) to organize strings of commands
+# note: the tidyverse uses a pipe (%>%) to organize strings of commands
 # begin by specifying your object, then follow with a pipe, then your functions
 
 # what is the price per carat for each diamond? 
 diamonds %>% 
   mutate(caratprice = price/carat)
-# note that the tidyverse does not require you to specify the data set after the pipe—it just recognizes the column names! 
+# note that the tidyverse does not require you to specify the data set with the column after the pipe—it just recognizes the column names! 
 
 ### summarize() ### 
-# creates a new data frame that returns one row for each combination of grouping variables
+# creates a tibble  that returns one row for each combination of grouping variables
+# you supply which functions you want to be included in the summary
 # if there are no grouping variables, the output will have a single row summarizing all observations in the input
 # what are the min/max/mean/sd for the price of the diamonds in this data set?
   # no grouping variables
@@ -85,7 +86,6 @@ diamonds %>%
 # there are 35 cut x color combinations, so any number ≥ 35 works here
 
 ### filter() allows you to subset a data frame by retaining all rows that satisfy a logical condition (keep rows for which the condition = TRUE)
-
 # filter for all diamonds costing ≥ $1000
 diamonds %>% filter(price >= 1000)
 # note that this line does not create a new object as it is currently written
@@ -135,7 +135,7 @@ diamonds %>%
 diamonds %>% arrange(price)
 # from most expensive to least expensive 
 diamonds %>% arrange(-price)
-# arrange by cut then price from lowest to highest 
+# arrange by cut, then price from lowest to highest within each cut type
 diamonds %>% 
   group_by(cut) %>%
   arrange(price, .by_group = TRUE)
@@ -158,10 +158,12 @@ diamonds %>%
 ##### 3.2 PLOTTING (GGPLOT) #####
 #################################
 # we use a pipe to direct our plotting commands to the data set we care about 
-# then, we use the command ggplot()
+# then, we use the function ggplot()
 # ggplot uses the nested aes() function to describe how variables in the data are mapped to the plot
   # always specify your variables within aes()!
 # we add elements to our plots following the initial ggplot() function by adding '+' to the end of a line
+
+# Create a scatterplot of carat vs. price
 diamonds %>% 
   ggplot(aes(x=carat,y=price))+ 
   geom_point()
@@ -170,7 +172,7 @@ diamonds %>%
 # theme_bw()
 diamonds %>% 
   ggplot(aes(x=carat,y=price))+ 
-  theme_bw()+
+  theme_bw()+ # this line creates a gridded white background
   geom_point()
 
 # color the points by cut
@@ -179,6 +181,7 @@ diamonds %>%
   theme_bw()+
   geom_point(aes(color = cut))
 
+# the graph above has a lot of data 
 # we can use facet_wrap to split our plot into multiple panes for different groups
 diamonds %>% 
   ggplot(aes(x=carat,y=price))+ 
@@ -194,7 +197,7 @@ diamonds %>%
   facet_wrap(~cut,1,5)
 
 # ggplot has many plot types
-# let's look at the price distribution for diamonds between 2 and 3 carats across the 5 cuts
+# let's look at the price distribution for diamonds between 2 and 3 carats in size, across the 5 cut types
 diamonds %>%
   filter(carat >= 2.5 & carat <= 3) %>%
   ggplot(aes(x = cut, y = price))+
